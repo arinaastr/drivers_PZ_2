@@ -3,7 +3,9 @@
 Создан файл `simple.c` с исходным кодом модуля ядра с помощью команды `nano simple.c`. Аналогично создан файл `Makefile` для сборки модуля
 ## Сборка модуля ядра
 Выполнена команда для сборки модуля:
-``` make```
+```
+make
+```
 Вывод:
 ```
 make -C /lib/modules/6.8.0-79-generic/build/ M=/home/drivers modules
@@ -21,13 +23,21 @@ make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-79-generic'
 ```
 ## Загрузка модуля в ядро
 Загрузка модуля с помощью команды:
-``` sudo insmod simple.ko ```
+``` 
+sudo insmod simple.ko
+```
 Проверка загрузки модуля:
-``` lsmod | grep simple ```
+``` 
+lsmod | grep simple
+```
 Вывод:
-``` simple                 12288  0 ```
+```
+simple                 12288  0
+```
 Просмотр сообщений ядра с правами суперпользователя:
-``` sudo dmesg | tail -5```
+``` 
+sudo dmesg | tail -5
+```
 Вывод:
 ```
 [ 8333.460286] audit: type=1400 audit(1757929882.481:330): apparmor="DENIED" operation="mknod" class="file" profile="ubuntu_pro_esm_cache" name="/usr/lib/python3/dist-packages/uaclient/messages/__pycache__/__init__.cpython-312.pyc.131387074624816" pid=3367 comm="python3" requested_mask="c" denied_mask="c" fsuid=0 ouid=0
@@ -37,9 +47,13 @@ make[1]: Leaving directory '/usr/src/linux-headers-6.8.0-79-generic'
 [10282.422053] Hello from the mai 307 team
 ```
 ## Выгрузка модуля из ядра
-``` sudo rmmod simple```
+``` 
+sudo rmmod simple
+```
 Проверка сообщений ядра после выгрузки модуля:
-``` sudo dmesg | tail -3```
+``` 
+sudo dmesg | tail -3
+```
 Вывод:
 ```
 [10282.421910] simple: module verification failed: signature and/or required key missing - tainting kernel
